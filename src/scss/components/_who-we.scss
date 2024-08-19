@@ -1,0 +1,60 @@
+.who-we {
+  &__body {
+    display: flex;
+    justify-content: center;
+  }
+  &__main {
+    position: relative;
+    width: 100%;
+    max-width: 816px;
+    border-left: 2px solid $colorWhite;
+    @include adaptiv-value(padding, 55, 15, 1);
+
+    &:before {
+      content: "";
+      width: 100%;
+      max-width: 290px;
+      height: 2px;
+      background: $colorWhite;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &:after {
+      content: "";
+      width: 100%;
+      max-width: 600px;
+      height: 2px;
+      background: $colorWhite;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    @media (max-width: 600px) {
+      &::before,
+      &::after {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__title {
+    @include adaptiv-value(font-size, 48, 22, 1);
+    font-family: $fontRoboto;
+    font-weight: medium;
+    @include adaptiv-value(margin-bottom, 20, 5, 1);
+  }
+
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    @include adaptiv-value(row-gap, 26, 17, 1);
+  }
+
+  &__text {
+    @include adaptiv-value(font-size, 20, 13, 1);
+    @include adaptiv-value(line-height, 26, 17, 1);
+  }
+}

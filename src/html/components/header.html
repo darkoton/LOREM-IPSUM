@@ -1,0 +1,116 @@
+<div class="header__backdrop"></div>
+<header class="header">
+  <div class="header__wrapper">
+    <div class="header__container _container">
+      <div class="header__body">
+        <div class="header__logo">
+          <img src="./img/header/logo.png" alt="" class="header__logo-pc">
+          <img src="./img/header/logo-mob.png" alt="" class="header__logo-mob">
+        </div>
+
+        <div class="header__menu">
+          <div class="header__burger-body">
+            <div class="header__burger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <nav class="header__nav">
+            <a href="#" class="header__link">HOME</a>
+            <a href="#" class="header__link">ABOUT</a>
+            <a href="#" class="header__link">TECHNOLOGIES</a>
+            <a href="#" class="header__link">CONTACT</a>
+          </nav>
+        </div>
+
+        <div class="header__select select">
+          <div class="select__value" onclick="selectOpen()">
+            <img src="./img/header/flag.png" alt="" class="select__flag">
+            <span class="select__value-text">ENGLISH</span>
+            <img src="./img/header/arrow-select.svg" alt="" class="select__arrow">
+          </div>
+          <ul class="select__options">
+            <li class="select__option" value="1">
+              <img src="./img/header/flag.png" alt="" class="select__flag">
+              ENGLISH
+            </li>
+            <li class="select__option" value="2">
+              <img src="./img/header/flag.png" alt="" class="select__flag">
+              ENGLISH 2
+            </li>
+            <li class="select__option" value="3">
+              <img src="./img/header/flag.png" alt="" class="select__flag">
+              ENGLISH
+            </li>
+            <li class="select__option" value="4">
+              <img src="./img/header/flag.png" alt="" class="select__flag">
+              ENGLISH
+            </li>
+          </ul>
+        </div>
+        <button class="header__discuss">
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M2 12C1.5875 12 1.23438 11.8531 0.940625 11.5594C0.646875 11.2656 0.5 10.9125 0.5 10.5V1.5C0.5 1.0875 0.646875 0.734375 0.940625 0.440625C1.23438 0.146875 1.5875 0 2 0H14C14.4125 0 14.7656 0.146875 15.0594 0.440625C15.3531 0.734375 15.5 1.0875 15.5 1.5V10.5C15.5 10.9125 15.3531 11.2656 15.0594 11.5594C14.7656 11.8531 14.4125 12 14 12H2ZM8 6.75L2 3V10.5H14V3L8 6.75ZM8 5.25L14 1.5H2L8 5.25ZM2 3V1.5V10.5V3Z"
+              fill="url(#paint0_radial_2013_8)" />
+            <defs>
+              <radialGradient id="paint0_radial_2013_8" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(8 6) rotate(90) scale(6 7.5)">
+                <stop stop-color="#04050D" />
+                <stop offset="1" stop-color="#090D1A" />
+              </radialGradient>
+            </defs>
+          </svg>
+
+          <span>Discuss a project</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+
+  const select = document.querySelector('.header__select')
+  let selectValue = 1
+
+  function selectOpen() {
+    select.classList.toggle('active')
+  }
+
+  const options = select.querySelectorAll('.select__option')
+  options[0].classList.add('active')
+  options.forEach(o => {
+    o.onclick = selectChange
+  })
+
+  function selectChange(e) {
+    const target = e.target
+    select.classList.remove('active')
+    selectValue = target.value
+    const textValue = target.innerText
+
+    select.querySelector('.select__value-text').innerText = textValue
+
+    options.forEach(o => {
+      o.classList.remove('active')
+    })
+
+    target.classList.add('active')
+  }
+
+  const burger = document.querySelector('.header__burger-body')
+
+  function burgerHandle() {
+    document.body.classList.toggle('_lock-scroll')
+    document.querySelector('.header').classList.toggle('burger-active')
+    burger.querySelector('.header__burger').classList.toggle('active')
+    document.querySelector('.header__backdrop').classList.toggle('active')
+    document.querySelector('.header__nav').classList.toggle('active')
+  }
+
+  burger.onclick = burgerHandle
+  document.querySelector('.header__backdrop').onclick = burgerHandle
+
+</script>

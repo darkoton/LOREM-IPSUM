@@ -1,0 +1,33 @@
+.technologies {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    @include adaptiv-value(font-size, 48, 22, 1);
+    text-align: center;
+    @include adaptiv-value(margin-bottom, 66, 21, 1);
+    font-family: $fontRoboto;
+    font-weight: bold;
+  }
+
+  &__list {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    @include adaptiv-value(column-gap, 50, 15, 1);
+    @include adaptiv-value(row-gap, 50, 15, 1);
+    transition: all 1s linear 0s;
+
+    &.table {
+      flex-wrap: wrap;
+      width: auto;
+    }
+  }
+  &__item {
+    width: 80px;
+  }
+}
