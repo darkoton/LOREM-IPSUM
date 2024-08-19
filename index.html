@@ -1,382 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="./favicons/favicon.ico"><link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="192x192" href="./favicons/favicon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-512x512.png"><link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon-180x180.png"><link rel="manifest" href="./favicons/site.webmanifest"><link rel="stylesheet" href="./css/style.css"><title>Gulp-template</title></head><body><div class="wrapper"><div class="content"><div class="header__backdrop"></div><header class="header"><div class="header__wrapper"><div class="header__container _container"><div class="header__body"><div class="header__logo"><picture><source srcset="./img/header/logo.webp" type="image/webp"><img src="./img/header/logo.png" alt="" class="header__logo-pc"></picture><picture><source srcset="./img/header/logo-mob.webp" type="image/webp"><img src="./img/header/logo-mob.png" alt="" class="header__logo-mob"></picture></div><div class="header__menu"><div class="header__burger-body"><div class="header__burger"><span></span> <span></span> <span></span></div></div><nav class="header__nav"><a href="#" class="header__link">HOME</a> <a href="#" class="header__link">ABOUT</a> <a href="#" class="header__link">TECHNOLOGIES</a> <a href="#" class="header__link">CONTACT</a></nav></div><div class="header__select select"><div class="select__value" onclick="selectOpen()"><picture><source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt="" class="select__flag"></picture><span class="select__value-text">ENGLISH</span> <img src="./img/header/arrow-select.svg" alt="" class="select__arrow"></div><ul class="select__options"><li class="select__option" value="1"><picture><source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt="" class="select__flag"></picture>ENGLISH</li><li class="select__option" value="2"><picture><source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt="" class="select__flag"></picture>ENGLISH 2</li><li class="select__option" value="3"><picture><source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt="" class="select__flag"></picture>ENGLISH</li><li class="select__option" value="4"><picture><source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt="" class="select__flag"></picture>ENGLISH</li></ul></div><button class="header__discuss"><svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12C1.5875 12 1.23438 11.8531 0.940625 11.5594C0.646875 11.2656 0.5 10.9125 0.5 10.5V1.5C0.5 1.0875 0.646875 0.734375 0.940625 0.440625C1.23438 0.146875 1.5875 0 2 0H14C14.4125 0 14.7656 0.146875 15.0594 0.440625C15.3531 0.734375 15.5 1.0875 15.5 1.5V10.5C15.5 10.9125 15.3531 11.2656 15.0594 11.5594C14.7656 11.8531 14.4125 12 14 12H2ZM8 6.75L2 3V10.5H14V3L8 6.75ZM8 5.25L14 1.5H2L8 5.25ZM2 3V1.5V10.5V3Z" fill="url(#paint0_radial_2013_8)"/><defs><radialGradient id="paint0_radial_2013_8" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8 6) rotate(90) scale(6 7.5)"><stop stop-color="#04050D"/><stop offset="1" stop-color="#090D1A"/></radialGradient></defs></svg> <span>Discuss a project</span></button></div></div></div></header><script>const select = document.querySelector('.header__select')
+  let selectValue = 1
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="./favicons/favicon.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="./favicons/favicon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon-180x180.png">
-  <link rel="manifest" href="./favicons/site.webmanifest">
-  <link rel="stylesheet" href="./css/style.css">
-  <title>Gulp-template</title>
+  function selectOpen() {
+    select.classList.toggle('active')
+  }
 
-</head>
+  const options = select.querySelectorAll('.select__option')
+  options[0].classList.add('active')
+  options.forEach(o => {
+    o.onclick = selectChange
+  })
 
-<body>
+  function selectChange(e) {
+    const target = e.target
+    select.classList.remove('active')
+    selectValue = target.value
+    const textValue = target.innerText
 
+    select.querySelector('.select__value-text').innerText = textValue
 
-  <div class="wrapper">
-    <div class="content">
-      <div class="header__backdrop"></div>
-      <header class="header">
-        <div class="header__wrapper">
-          <div class="header__container _container">
-            <div class="header__body">
-              <div class="header__logo">
-                <picture>
-                  <source srcset="./img/header/logo.webp" type="image/webp"><img src="./img/header/logo.png" alt=""
-                    class="header__logo-pc">
-                </picture>
-                <picture>
-                  <source srcset="./img/header/logo-mob.webp" type="image/webp"><img src="./img/header/logo-mob.png"
-                    alt="" class="header__logo-mob">
-                </picture>
-              </div>
+    options.forEach(o => {
+      o.classList.remove('active')
+    })
 
-              <div class="header__menu">
-                <div class="header__burger-body">
-                  <div class="header__burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-                <nav class="header__nav">
-                  <a href="#" class="header__link">HOME</a>
-                  <a href="#" class="header__link">ABOUT</a>
-                  <a href="#" class="header__link">TECHNOLOGIES</a>
-                  <a href="#" class="header__link">CONTACT</a>
-                </nav>
-              </div>
+    target.classList.add('active')
+  }
 
-              <div class="header__select select">
-                <div class="select__value" onclick="selectOpen()">
-                  <picture>
-                    <source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt=""
-                      class="select__flag">
-                  </picture>
-                  <span class="select__value-text">ENGLISH</span>
-                  <img src="./img/header/arrow-select.svg" alt="" class="select__arrow">
-                </div>
-                <ul class="select__options">
-                  <li class="select__option" value="1">
-                    <picture>
-                      <source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt=""
-                        class="select__flag">
-                    </picture>
-                    ENGLISH
-                  </li>
-                  <li class="select__option" value="2">
-                    <picture>
-                      <source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt=""
-                        class="select__flag">
-                    </picture>
-                    ENGLISH 2
-                  </li>
-                  <li class="select__option" value="3">
-                    <picture>
-                      <source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt=""
-                        class="select__flag">
-                    </picture>
-                    ENGLISH
-                  </li>
-                  <li class="select__option" value="4">
-                    <picture>
-                      <source srcset="./img/header/flag.webp" type="image/webp"><img src="./img/header/flag.png" alt=""
-                        class="select__flag">
-                    </picture>
-                    ENGLISH
-                  </li>
-                </ul>
-              </div>
-              <button class="header__discuss">
-                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M2 12C1.5875 12 1.23438 11.8531 0.940625 11.5594C0.646875 11.2656 0.5 10.9125 0.5 10.5V1.5C0.5 1.0875 0.646875 0.734375 0.940625 0.440625C1.23438 0.146875 1.5875 0 2 0H14C14.4125 0 14.7656 0.146875 15.0594 0.440625C15.3531 0.734375 15.5 1.0875 15.5 1.5V10.5C15.5 10.9125 15.3531 11.2656 15.0594 11.5594C14.7656 11.8531 14.4125 12 14 12H2ZM8 6.75L2 3V10.5H14V3L8 6.75ZM8 5.25L14 1.5H2L8 5.25ZM2 3V1.5V10.5V3Z"
-                    fill="url(#paint0_radial_2013_8)" />
-                  <defs>
-                    <radialGradient id="paint0_radial_2013_8" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
-                      gradientTransform="translate(8 6) rotate(90) scale(6 7.5)">
-                      <stop stop-color="#04050D" />
-                      <stop offset="1" stop-color="#090D1A" />
-                    </radialGradient>
-                  </defs>
-                </svg>
+  const burger = document.querySelector('.header__burger-body')
 
-                <span>Discuss a project</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+  function burgerHandle() {
+    document.body.classList.toggle('_lock-scroll')
+    document.querySelector('.header').classList.toggle('burger-active')
+    burger.querySelector('.header__burger').classList.toggle('active')
+    document.querySelector('.header__backdrop').classList.toggle('active')
+    document.querySelector('.header__nav').classList.toggle('active')
+  }
 
-      <script>
+  burger.onclick = burgerHandle
+  document.querySelector('.header__backdrop').onclick = burgerHandle</script><main id="fullpage" class="page"><div class="home section"><div class="home__wrapper"><div class="home__container _container"><div class="home__body"><h1 class="home__title">WE BRING YOUR <span class="blue-text">IDEAS</span> TO THE DIGITAL WORD</h1><div class="home__texts"><p class="home__text">Lorem ipsum odor amet, consectetuer adipiscing elit. Ex ornare nisl dapibus cubilia condimentum cras. Praesent parturient dapibus nullam integer adipiscing litora habitant.</p><p class="home__text">Accumsan vulputate facilisi iaculis consectetur magnis inceptos posuere.</p></div><div class="home__experiences"><div class="home__experience"><div class="home__experience-value">99</div><h3 class="home__experience-title">Years in the development field</h3></div><div class="home__experience"><div class="home__experience-value">99+</div><h3 class="home__experience-title">Finished projects</h3></div><div class="home__experience"><div class="home__experience-value">99</div><h3 class="home__experience-title">Programming languages and frameworks</h3></div><div class="home__experience"><div class="home__experience-value">99</div><h3 class="home__experience-title">Long-term projects in progress</h3></div></div></div></div></div></div><div class="who-we section"><div class="who-we__wrapper"><div class="who-we__container _container"><div class="who-we__body"><div class="who-we__main"><h2 class="who-we__title"><span class="blue-text">Who</span> we are?</h2><div class="who-we__texts"><p class="who-we__text">Lorem ipsum dolor sit amet, eos veri quodsi sententiae ea. Ut eum mazim repudiandae complectitur, est cu prima altera, agam instructior te eos. Cum volumus probatus ex, quis accumsan vim ei. Qui quot veri pertinax cu, voluptua torquatos et vis, autem timeam ex per. Pro ea eripuit fabulas consequuntur, ut vix facer option accusamus.</p><p class="who-we__text">Ius ea putant omnium invenire. Purto suscipiantur conclusionemque pri no, nec cu integre placerat. Nulla minim ludus ei mei. An vitae aliquam scripserit sed, vim id graece diceret splendide. No mei facilis dissentias, cu probo eripuit consetetur his.</p><p class="who-we__text">Te erat praesent mel, te ancillae scriptorem cum. Simul erroribus duo cu, in noster equidem assueverit pri. Fugit putent gloriatur at vel, an quo sententiae posidonium adversarium. Cu fastidii nominati laboramus sed, dicat eleifend ad quo.</p></div></div></div></div></div></div><div class="technologies section"><div class="technologies__wrapper"><div class="technologies__container _container"><div class="technologies__body"><h2 class="technologies__title"><span class="blue-text">Technologies</span> we work with</h2><ul class="technologies__list"><picture><source srcset="./img/technologies/git.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/git.png" alt="git"></picture><picture><source srcset="./img/technologies/csharp.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/csharp.png" alt="c#"></picture><picture><source srcset="./img/technologies/mysql.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/mysql.png" alt="mysql"></picture><picture><source srcset="./img/technologies/java.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/java.png" alt="java"></picture><picture><source srcset="./img/technologies/js.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/js.png" alt="js"></picture><picture><source srcset="./img/technologies/cpp.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/cpp.png" alt="cpp"></picture><picture><source srcset="./img/technologies/arduino.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/arduino.png" alt="arduino"></picture><img class="technologies__item" src="./img/technologies/mojo.svg" alt="mojo"><picture><source srcset="./img/technologies/unity.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/unity.png" alt="unity"></picture><picture><source srcset="./img/technologies/ruby.webp" type="image/webp"><img class="technologies__item" src="./img/technologies/ruby.png" alt="ruby"></picture></ul></div></div></div></div><script>let mobile = {
+    Android: function () { return navigator.userAgent.match(/Android/i); },
+    BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); },
+    iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+    Opera: function () { return navigator.userAgent.match(/Opera Mini/i); },
+    Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
+    any: function () { return (mobile.Android() || mobile.BlackBerry() || mobile.iOS() || mobile.Opera() || mobile.Windows()); }
+  };
 
-        const select = document.querySelector('.header__select')
-        let selectValue = 1
+  if (!mobile.any()) {
+    const block = document.querySelector('.technologies');
+    const list = block.querySelector('.technologies__list')
+    block.addEventListener('mousemove', function (e) {
+      const x = ((window.innerWidth / 2) - e.clientX) / window.innerWidth
+      list.style.transform = 'translate(' + x * (list.clientWidth - window.innerWidth) + 'px, 0)';
+    });
 
-        function selectOpen() {
-          select.classList.toggle('active')
-        }
-
-        const options = select.querySelectorAll('.select__option')
-        options[0].classList.add('active')
-        options.forEach(o => {
-          o.onclick = selectChange
-        })
-
-        function selectChange(e) {
-          const target = e.target
-          select.classList.remove('active')
-          selectValue = target.value
-          const textValue = target.innerText
-
-          select.querySelector('.select__value-text').innerText = textValue
-
-          options.forEach(o => {
-            o.classList.remove('active')
-          })
-
-          target.classList.add('active')
-        }
-
-        const burger = document.querySelector('.header__burger-body')
-
-        function burgerHandle() {
-          document.body.classList.toggle('_lock-scroll')
-          document.querySelector('.header').classList.toggle('burger-active')
-          burger.querySelector('.header__burger').classList.toggle('active')
-          document.querySelector('.header__backdrop').classList.toggle('active')
-          document.querySelector('.header__nav').classList.toggle('active')
-        }
-
-        burger.onclick = burgerHandle
-        document.querySelector('.header__backdrop').onclick = burgerHandle
-
-      </script>
-      <main id="fullpage" class="page">
-        <div class="home section">
-          <div class="home__wrapper">
-            <div class="home__container _container">
-              <div class="home__body">
-                <h1 class="home__title">WE BRING YOUR <span class="blue-text">IDEAS</span> TO THE DIGITAL WORD</h1>
-                <div class="home__texts">
-                  <p class="home__text">
-                    Lorem ipsum odor amet, consectetuer adipiscing elit.
-                    Ex ornare nisl dapibus cubilia condimentum cras. Praesent parturient dapibus nullam integer
-                    adipiscing
-                    litora habitant.</p>
-                  <p class="home__text">
-                    Accumsan vulputate facilisi iaculis consectetur magnis inceptos posuere.
-                  </p>
-                </div>
-
-                <div class="home__experiences">
-                  <div class="home__experience">
-                    <div class="home__experience-value">99</div>
-                    <h3 class="home__experience-title">
-                      Years in the development field
-                    </h3>
-                  </div>
-                  <div class="home__experience">
-                    <div class="home__experience-value">99+</div>
-                    <h3 class="home__experience-title">
-                      Finished projects
-                    </h3>
-                  </div>
-                  <div class="home__experience">
-                    <div class="home__experience-value">99</div>
-                    <h3 class="home__experience-title">
-                      Programming languages and frameworks
-                    </h3>
-                  </div>
-                  <div class="home__experience">
-                    <div class="home__experience-value">99</div>
-                    <h3 class="home__experience-title">
-                      Long-term projects in progress
-                    </h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="who-we section">
-          <div class="who-we__wrapper">
-            <div class="who-we__container _container">
-              <div class="who-we__body">
-                <div class="who-we__main">
-                  <h2 class="who-we__title"><span class="blue-text">Who</span> we are?</h2>
-                  <div class="who-we__texts">
-                    <p class="who-we__text">Lorem ipsum dolor sit amet, eos veri quodsi sententiae ea. Ut eum mazim
-                      repudiandae
-                      complectitur, est cu prima altera, agam instructior te eos. Cum volumus probatus ex, quis accumsan
-                      vim ei.
-                      Qui quot veri pertinax cu, voluptua torquatos et vis, autem timeam ex per. Pro ea eripuit fabulas
-                      consequuntur, ut vix facer option accusamus.</p>
-
-                    <p class="who-we__text"> Ius ea putant omnium invenire. Purto suscipiantur conclusionemque pri no,
-                      nec cu
-                      integre placerat. Nulla
-                      minim ludus ei mei. An vitae aliquam scripserit sed, vim id graece diceret splendide. No mei
-                      facilis
-                      dissentias, cu probo eripuit consetetur his.</p>
-
-                    <p class="who-we__text">Te erat praesent mel, te ancillae scriptorem cum. Simul erroribus duo cu, in
-                      noster
-                      equidem assueverit pri. Fugit putent gloriatur at vel, an quo sententiae posidonium adversarium.
-                      Cu
-                      fastidii
-                      nominati laboramus sed, dicat eleifend ad quo.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="technologies section">
-          <div class="technologies__wrapper">
-            <div class="technologies__container _container">
-              <div class="technologies__body">
-                <h2 class="technologies__title"><span class="blue-text">Technologies</span> we work with</h2>
-
-                <ul class="technologies__list">
-                  <picture>
-                    <source srcset="./img/technologies/git.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/git.png" alt="git">
-                  </picture>
-                  <picture>
-                    <source srcset="./img/technologies/csharp.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/csharp.png" alt="c#">
-                  </picture>
-                  <picture>
-                    <source srcset="./img/technologies/mysql.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/mysql.png" alt="mysql">
-                  </picture>
-                  <picture>
-                    <source srcset="./img/technologies/java.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/java.png" alt="java">
-                  </picture>
-                  <picture>
-                    <source srcset="./img/technologies/js.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/js.png" alt="js">
-                  </picture>
-                  <picture>
-                    <source srcset="./img/technologies/cpp.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/cpp.png" alt="cpp">
-                  </picture>
-                  <picture>
-                    <source srcset="./img/technologies/arduino.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/arduino.png" alt="arduino">
-                  </picture>
-                  <img class="technologies__item" src="./img/technologies/mojo.svg" alt="mojo">
-                  <picture>
-                    <source srcset="./img/technologies/unity.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/unity.png" alt="unity">
-                  </picture>
-                  <picture>
-                    <source srcset="./img/technologies/ruby.webp" type="image/webp"><img class="technologies__item"
-                      src="./img/technologies/ruby.png" alt="ruby">
-                  </picture>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <script>
-
-          let mobile = {
-            Android: function () { return navigator.userAgent.match(/Android/i); },
-            BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); },
-            iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
-            Opera: function () { return navigator.userAgent.match(/Opera Mini/i); },
-            Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
-            any: function () { return (mobile.Android() || mobile.BlackBerry() || mobile.iOS() || mobile.Opera() || mobile.Windows()); }
-          };
-
-          if (!mobile.any()) {
-            const block = document.querySelector('.technologies');
-            const list = block.querySelector('.technologies__list')
-            block.addEventListener('mousemove', function (e) {
-              const x = ((window.innerWidth / 2) - e.clientX) / window.innerWidth
-              list.style.transform = 'translate(' + x * (list.clientWidth - window.innerWidth) + 'px, 0)';
-            });
-
-          } else {
-            document.querySelector('.technologies__list').classList.add('table')
-          }
-
-        </script>
-        <div class="contact section">
-          <div class="contact__wrapper">
-            <div class="contact__container _container">
-              <div class="contact__body">
-                <h2 class="contact__title blue-text">Contact us</h2>
-                <p class="contact__text">
-                  Do you have questions or want to place an order?
-                  We will be happy to talk to you.
-                </p>
-
-                <form action="#" class="contact__form">
-
-                  <div class="contact__field">
-                    <input type="text" class="contact__input" placeholder="Name">
-                  </div>
-
-                  <div class="contact__field">
-                    <input type="text" class="contact__input" placeholder="Email, Discord or Telegram">
-                  </div>
-
-                  <div class="contact__field">
-                    <input type="text" class="contact__input" placeholder="ToR document (optional)">
-                    <img src="./img/contact/plus.svg" alt="">
-                  </div>
-
-                  <div class="contact__field">
-                    <textarea rows="4" type="text" class="contact__input"
-                      placeholder="Enter anything you want to share in this field so we can learn more about your project"></textarea>
-                  </div>
-
-                  <button class="contact__submit">Submit</button>
-                </form>
-              </div>
-            </div>
-          </div>
-          <footer class="footer">
-            <div class="footer__wrapper">
-              <div class="footer__container _container">
-                <div class="footer__body">
-                  <div class="footer__left">
-                    <picture>
-                      <source srcset="./img/footer/logo.webp" type="image/webp"><img src="./img/footer/logo.png" alt=""
-                        class="footer__logo">
-                    </picture>
-
-                    <div class="footer__rights">
-                      © 2024 Company name <br>
-                      All rights reserved.
-                    </div>
-                  </div>
-
-                  <div class="footer__right">
-                    <div class="footer__email">
-                      Email: <a href="mailto:companyname@template.com">companyname@template.com</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
-        </div>
-      </main>
-    </div>
-  </div>
-  <script src="js/script.js"></script>
-</body>
-
-</html>
+  } else {
+    document.querySelector('.technologies__list').classList.add('table')
+  }</script><div class="contact section"><div class="contact__wrapper"><div class="contact__container _container"><div class="contact__body"><h2 class="contact__title blue-text">Contact us</h2><p class="contact__text">Do you have questions or want to place an order? We will be happy to talk to you.</p><form action="#" class="contact__form"><div class="contact__field"><input type="text" class="contact__input" placeholder="Name"></div><div class="contact__field"><input type="text" class="contact__input" placeholder="Email, Discord or Telegram"></div><div class="contact__field"><input type="text" class="contact__input" placeholder="ToR document (optional)"> <img src="./img/contact/plus.svg" alt=""></div><div class="contact__field"><textarea rows="4" type="text" class="contact__input" placeholder="Enter anything you want to share in this field so we can learn more about your project"></textarea></div><button class="contact__submit">Submit</button></form></div></div></div><footer class="footer"><div class="footer__wrapper"><div class="footer__container _container"><div class="footer__body"><div class="footer__left"><picture><source srcset="./img/footer/logo.webp" type="image/webp"><img src="./img/footer/logo.png" alt="" class="footer__logo"></picture><div class="footer__rights">© 2024 Company name<br>All rights reserved.</div></div><div class="footer__right"><div class="footer__email">Email: <a href="mailto:companyname@template.com">companyname@template.com</a></div></div></div></div></div></footer></div></main></div></div><script src="js/script.js"></script></body></html>
