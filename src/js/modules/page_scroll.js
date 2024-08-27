@@ -16,6 +16,16 @@ page.style.transform = 'translateY(0%)';
 let sectionActive = 0;
 let scrolling = false;
 
+document.querySelectorAll('.header__link').forEach((link, i) => {
+  link.onclick = () => {
+    if (scrolling) {
+      return;
+    }
+    sectionActive = i;
+    scrollHandle();
+  };
+});
+
 function scrollHandle() {
   page.style.transform = `translateY(-${100 * sectionActive}%)`;
 
